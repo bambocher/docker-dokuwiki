@@ -23,7 +23,7 @@ ADD lighttpd.conf /etc/lighttpd/lighttpd.conf
 
 EXPOSE 80
 
-VOLUME [/dokuwiki/data, /dokuwiki/lib/plugins, \
-        /dokuwiki/conf, /dokuwiki/lib/tpl, /var/log/lighttpd]
+VOLUME ["/dokuwiki/data", "/dokuwiki/lib/plugins", \
+        "/dokuwiki/conf", "/dokuwiki/lib/tpl", "/var/log/lighttpd"]
 
 ENTRYPOINT ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
