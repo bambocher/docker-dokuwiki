@@ -16,7 +16,8 @@ RUN wget -O dokuwiki.tgz http://download.dokuwiki.org/src/dokuwiki/dokuwiki-$VER
     && chown -R lighttpd:lighttpd /dokuwiki \
     && chmod +x /dokuwiki \
     && chown -R lighttpd:lighttpd /var/log/lighttpd \
-    && chmod +x /var/log/lighttpd
+    && chmod +x /var/log/lighttpd \
+    && sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/php.ini
 
 ADD lighttpd.conf /etc/lighttpd/lighttpd.conf
 
