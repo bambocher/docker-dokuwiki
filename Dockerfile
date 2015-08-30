@@ -1,7 +1,7 @@
 FROM alpine:3.2
 MAINTAINER Dmitry Prazdnichnov <dp@bambucha.org>
 
-RUN apk --update add lighttpd php-cgi php-gd php-xml \
+RUN apk --update add lighttpd php-cgi php-gd php-xml php-openssl \
     && rm -rf /var/cache/apk/*
 
 ENV VERSION     2015-08-10a
