@@ -56,10 +56,10 @@ docker run \
 
 ### Restore
 
-Create new dokuwiki container, but don't start it yet:
+Run DokuWiki container:
 
 ```shell
-docker create \
+docker run \
     --publish 80:80 \
     --name dokuwiki \
     --restart always \
@@ -67,10 +67,16 @@ docker create \
     bambucha/dokuwiki
 ```
 
-Create data container for persistency (optional):
+Create data container:
 
 ```shell
 docker run --volumes-from dokuwiki --name dokuwiki-data busybox
+```
+
+Stop dokuwiki:
+
+```shell
+docker stop dokuwiki
 ```
 
 Restore from backup using temporary container:
