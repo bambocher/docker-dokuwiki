@@ -1,5 +1,11 @@
 ## Alpine DokuWiki Docker Container
 
+[![GitHub Tag](https://img.shields.io/github/tag/bambocher/docker-dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
+[![Docker Stars](https://img.shields.io/docker/stars/bambucha/dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bambucha/dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
+[![Docker Automated Build](https://img.shields.io/badge/automated-build-green.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
+[![Docker License](https://img.shields.io/badge/license-MIT-green.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
+
 ### Run:
 
 Run DokuWiki container:
@@ -50,7 +56,7 @@ docker run \
     --rm \
     --volumes-from dokuwiki-data \
     --volume $(pwd):/backups \
-    alpine:3.2 \
+    alpine:3.4 \
     tar zcvf /backups/dokuwiki-backup.tar.gz /dokuwiki
 ```
 
@@ -87,7 +93,7 @@ docker run \
     --volumes-from dokuwiki \
     -w / \
     -v $(pwd):/backup \
-    alpine:3.2 \
+    alpine:3.4 \
     tar xzvf /backup/dokuwiki-backup.tar.gz
 ```
 
@@ -107,4 +113,4 @@ docker build --tag bambucha/dokuwiki .
 
 ### License
 
-[The MIT License (MIT)](LICENSE)
+[The MIT License](LICENSE)
