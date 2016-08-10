@@ -1,8 +1,8 @@
 FROM alpine:3.4
 MAINTAINER Dmitry Prazdnichnov <dp@bambucha.org>
 
-ENV VERSION  2016-06-26
-ENV CHECKSUM 4d0cb8dc8b256b54e9412a8c1b73af13b079960920934085a4528e52b63eaa26
+ENV VERSION  2016-06-26a
+ENV CHECKSUM dfdb243cc766482eeefd99e70215b289c9aa0bd8bee83068f438440d7b1a1ce6
 
 ADD dokuwiki.sh /usr/local/bin/dokuwiki
 
