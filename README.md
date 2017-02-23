@@ -8,7 +8,7 @@ Run DokuWiki container:
 
 ```shell
 docker run \
-    --publish 80:80 \
+    --publish 8080:8080 \
     --name dokuwiki \
     --restart always \
     --detach \
@@ -22,7 +22,7 @@ Setup DokuWiki using [installer](http://localhost/install.php).
 Create data container:
 
 ```shell
-docker run --volumes-from dokuwiki --name dokuwiki-data busybox
+docker run --volumes-from dokuwiki --name dokuwiki_data busybox
 ```
 
 Now you can safely delete dokuwiki container:
@@ -31,12 +31,12 @@ Now you can safely delete dokuwiki container:
 docker stop dokuwiki && docker rm dokuwiki
 ```
 
-To restore dokuwiki, create new dokuwiki container and attach dokuwiki-data volume to it:
+To restore dokuwiki, create new dokuwiki container and attach dokuwiki_data volume to it:
 
 ```shell
 docker run \
     --publish 80:80 \
-    --volumes-from dokuwiki-data \
+    --volumes-from dokuwiki_data \
     --name dokuwiki \
     --restart always \
     --detach \
@@ -45,15 +45,15 @@ docker run \
 
 ## Backup
 
-Create dokuwiki-backup.tar.gz archive in current directory using temporaty container:
+Create dokuwiki_backup.tar.gz archive in current directory using temporaty container:
 
 ```shell
 docker run \
     --rm \
-    --volumes-from dokuwiki-data \
+    --volumes-from dokuwiki_data \
     --volume $(pwd):/backups \
-    alpine:3.4 \
-    tar zcvf /backups/dokuwiki-backup.tar.gz /dokuwiki
+    alpine:3.5 \
+    tar zcvf /backups/dokuwiki_backup.tar.gz /srv
 ```
 
 ## Restore
@@ -62,7 +62,7 @@ Run DokuWiki container:
 
 ```shell
 docker run \
-    --publish 80:80 \
+    --publish 8080:8080 \
     --name dokuwiki \
     --restart always \
     --detach \
@@ -72,7 +72,7 @@ docker run \
 Create data container:
 
 ```shell
-docker run --volumes-from dokuwiki --name dokuwiki-data busybox
+docker run --volumes-from dokuwiki --name dokuwiki_data busybox
 ```
 
 Stop dokuwiki:
@@ -89,22 +89,14 @@ docker run \
     --volumes-from dokuwiki \
     -w / \
     -v $(pwd):/backup \
-    alpine:3.4 \
-    tar xzvf /backup/dokuwiki-backup.tar.gz
+    alpine:3.5 \
+    tar xzvf /backup/dokuwiki_backup.tar.gz
 ```
 
 Start dokuwiki:
 
 ```shell
 docker start dokuwiki
-```
-
-## Build:
-
-```shell
-git clone https://github.com/bambocher/docker-dokuwiki
-cd docker-dokuwiki
-docker build --tag bambucha/dokuwiki .
 ```
 
 ## License
