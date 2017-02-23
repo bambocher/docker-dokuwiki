@@ -19,7 +19,7 @@ RUN apk --no-cache add lighttpd php5-cgi php5-curl php5-gd php5-json \
 	&& curl -sL https://github.com/splitbrain/dokuwiki/archive/release_stable_$VERSION.tar.gz \
         | tar xz -C /dokuwiki --strip-components=1 \
     && apk del build-dependencies \
-    && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php7/php.ini
+    && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/php.ini
 
 COPY ./entrypoint.sh /
 COPY lighttpd.conf /etc/lighttpd
