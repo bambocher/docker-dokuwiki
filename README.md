@@ -1,12 +1,8 @@
-## Alpine DokuWiki Docker Container
+# DokuWiki Docker Image
 
-[![GitHub Tag](https://img.shields.io/github/tag/bambocher/docker-dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
-[![Docker Stars](https://img.shields.io/docker/stars/bambucha/dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/bambucha/dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
-[![Docker Automated Build](https://img.shields.io/badge/automated-build-green.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
-[![Docker License](https://img.shields.io/badge/license-MIT-green.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
+[![Version](https://images.microbadger.com/badges/version/bambucha/docker-dokuwiki.svg)](https://microbadger.com/images/bambucha/dokuwiki) [![Layers](https://images.microbadger.com/badges/image/bambucha/docker-dokuwiki.svg)](https://microbadger.com/images/bambucha/dokuwiki/) [![Commit](https://images.microbadger.com/badges/commit/bambucha/docker-dokuwiki.svg)](https://microbadger.com/images/bambucha/dokuwiki) [![License](https://images.microbadger.com/badges/license/bambucha/docker-dokuwiki.svg)](https://microbadger.com/images/bambucha/dokuwiki) [![Automated Build](https://img.shields.io/docker/automated/bambucha/docker-dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/) [![Docker Pulls](https://img.shields.io/docker/pulls/bambucha/docker-dokuwiki.svg)](https://registry.hub.docker.com/u/bambucha/dokuwiki/)
 
-### Run:
+## Run:
 
 Run DokuWiki container:
 
@@ -21,7 +17,7 @@ docker run \
 
 Setup DokuWiki using [installer](http://localhost/install.php).
 
-### Data container
+## Data container
 
 Create data container:
 
@@ -47,7 +43,7 @@ docker run \
     bambucha/dokuwiki
 ```
 
-### Backup
+## Backup
 
 Create dokuwiki-backup.tar.gz archive in current directory using temporaty container:
 
@@ -60,7 +56,7 @@ docker run \
     tar zcvf /backups/dokuwiki-backup.tar.gz /dokuwiki
 ```
 
-### Restore
+## Restore
 
 Run DokuWiki container:
 
@@ -103,7 +99,7 @@ Start dokuwiki:
 docker start dokuwiki
 ```
 
-### Build:
+## Build:
 
 ```shell
 git clone https://github.com/bambocher/docker-dokuwiki
@@ -111,6 +107,6 @@ cd docker-dokuwiki
 docker build --tag bambucha/dokuwiki .
 ```
 
-### License
+## License
 
 [The MIT License](LICENSE)

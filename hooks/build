@@ -1,0 +1,15 @@
+#!/bin/sh
+
+VERSION=`git ls-remote -t https://github.com/splitbrain/dokuwiki \
+	| grep -Po '(?<=release_stable_)[0-9a-z-]*' \
+	| sort -ubt - -k 1,1nr -k 2,2nr -k 3,3r \
+	| head -n 1`
+
+docker build \
+    --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+    --build-arg VERSION=$VERSION \
+    --build-arg VCS_REF=`git rev-parse --short HEAD` \
+    -t $IMAGE_NAME .
+
+docker tag $IMAGE_NAME $DOCKER_REPO:$VERSION
+docker push $DOCKER_REPO:$VERSION
