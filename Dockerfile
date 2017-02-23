@@ -13,14 +13,16 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.license=MIT \
       org.label-schema.schema-version=1.0
 
-RUN apk --no-cache add lighttpd php5-cgi php5-curl php5-gd php5-json php5-openssl php5-xml php5-zlib \
-    && wget http://download.dokuwiki.org/src/dokuwiki/dokuwiki-$VERSION.tgz \
-    && tar zxf dokuwiki*.tgz \
-    && rm dokuwiki*.tgz \
-    && mv dokuwiki* dokuwiki \
     && chmod 755 dokuwiki \
     && chmod +x /usr/local/bin/dokuwiki \
-    && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/php.ini
+RUN apk --no-cache add lighttpd php7-cgi php7-curl php7-gd php7-json \
+		php7-openssl php7-xml php7-zlib \
+	&& apk --no-cache --virtual build-dependencies add curl tar \
+	&& mkdir /dokuwiki \
+	&& curl -sL https://github.com/splitbrain/dokuwiki/archive/release_stable_$VERSION.tar.gz \
+        | tar xz -C /dokuwiki --strip-components=1 \
+    && apk del build-dependencies \
+    && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php7/php.ini
 
 COPY lighttpd.conf /etc/lighttpd
 
