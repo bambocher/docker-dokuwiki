@@ -12,8 +12,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.license=MIT \
       org.label-schema.schema-version=1.0
 
-COPY entrypoint.sh /
-COPY lighttpd.conf /etc/lighttpd
+COPY ./entrypoint.sh /
+COPY ./lighttpd.conf /etc/lighttpd/lighttpd.conf
 
 RUN apk --no-cache add lighttpd php5-cgi php5-curl php5-gd php5-json \
 		php5-openssl php5-xml php5-zlib \
