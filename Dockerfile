@@ -18,7 +18,7 @@ RUN apk --no-cache add lighttpd php7-cgi php7-curl php7-gd php7-json \
 		| tar xz -C /srv --strip-components=1 \
 	&& chown -R lighttpd. /srv \
     && apk del curl tar \
-    && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/php.ini
+    && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php7/php.ini
 
 COPY lighttpd.conf /etc/lighttpd/
 
